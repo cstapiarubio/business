@@ -19,10 +19,15 @@ where client_id =10;
 identificación de 1? 
 ¿Qué pasa con el cliente = 20?
 
-select year (created_datetime) as año, count(created_datetime) as sitios, client_id
+select year (created_datetime) as año, month (created_datetime) as mes, count(created_datetime) as sitios, client_id
 from sites
 where client_id = 1
-group by created_datetime;*/
+group by created_datetime;
+
+select year (created_datetime) as año, month (created_datetime) as mes, count(created_datetime) as sitios, client_id
+from sites
+where client_id = 20
+group by created_datetime;
 
 /*5. ¿Qué consulta ejecutaría para obtener el número total de clientes potenciales generados para cada uno de los sitios 
 entre el 1 de enero de 2011 y el 15 de febrero de 2011?
@@ -84,11 +89,11 @@ order by client_id asc;*/
 /*9. Escriba una sola consulta que recupere los ingresos totales recaudados de cada cliente para cada mes del año.
  Pídalo por ID de cliente.*/
  
- select year(charged_datetime) as fecha , clients.last_name, sum(amount) as total_recaudado
+ select year(charged_datetime) as año, month (charged_datetime) as mes, clients.last_name, sum(amount) as total_recaudado
  from billing
  inner join clients
  on clients.client_id = billing.client_id
- group by clients.last_name
+ group by clients.last_name, mes
  order by clients.last_name asc;
 
 /*10. Escriba una sola consulta que recupere todos los sitios que posee cada cliente. Agrupe los resultados para que cada 

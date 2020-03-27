@@ -39,6 +39,7 @@ inner join sites
 on clients.client_id = sites.client_id
 inner join leads
 on sites.site_id = leads.site_id
+where registered_datetime >= '2011/01/01' AND registered_datetime < '2011/12/31'
 group by clients.client_id;
 /*7. ¿Qué consulta ejecutaría para obtener una lista de nombres de clientes y el número total de clientes potenciales que hemos generado para cada cliente cada mes entre los meses 1 y 6 del año 2011?
 

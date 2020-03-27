@@ -81,5 +81,10 @@ order by client_id asc;*/
 
 /*9. Escriba una sola consulta que recupere los ingresos totales recaudados de cada cliente para cada mes del año.
  Pídalo por ID de cliente.*/
+ 
+ select year(charged_datetime) as fecha , sum(amount) as total_recaudado, client_id
+ from billing
+ group by client_id
+ order by client_id asc;
 
 /*10. Escriba una sola consulta que recupere todos los sitios que posee cada cliente. Agrupe los resultados para que cada fila muestre un nuevo cliente. Se volverá más claro cuando agregue un nuevo campo llamado 'sitios' que tiene todos los sitios que posee el cliente. (SUGERENCIA: use GROUP_CONCAT)*/

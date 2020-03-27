@@ -7,17 +7,28 @@ where charged_datetime >= '2012/03/01' AND charged_datetime < '2012/03/31';
 2. ¿Qué consulta ejecutaría para obtener los ingresos totales recaudados del cliente con una identificación de 2?
 select sum(amount) as ingreso_total, client_id
 from billing
-where client_id =2;*/
+where client_id =2;
 
-/*3. ¿Qué consulta ejecutaría para obtener todos los sitios que posee client = 10?*/
+3. ¿Qué consulta ejecutaría para obtener todos los sitios que posee client = 10?
 
 select domain_name, client_id
 from sites
-where client_id =10;
+where client_id =10;*/
 
-/*4. ¿Qué consulta ejecutaría para obtener el número total de sitios creados por mes por año para el cliente con una identificación de 1? ¿Qué pasa con el cliente = 20?
+/*4. ¿Qué consulta ejecutaría para obtener el número total de sitios creados por mes por año para el cliente con una 
+identificación de 1? 
+¿Qué pasa con el cliente = 20?*/
 
-5. ¿Qué consulta ejecutaría para obtener el número total de clientes potenciales generados para cada uno de los sitios entre el 1 de enero de 2011 y el 15 de febrero de 2011?
+select year (created_datetime) as año, count(created_datetime) as sitios, client_id
+from sites
+where client_id = 1 
+group by año;
+
+
+/*group by count(created_datetime); /*and created_datetime like ('%2010%');
+/*where created_datetime like ('%2011%') and client_id =1;*/
+
+/*5. ¿Qué consulta ejecutaría para obtener el número total de clientes potenciales generados para cada uno de los sitios entre el 1 de enero de 2011 y el 15 de febrero de 2011?
 
 6. ¿Qué consulta ejecutaría para obtener una lista de nombres de clientes y el número total de clientes potenciales que hemos generado para cada uno de nuestros clientes entre el 1 de enero de 2011 y el 31 de diciembre de 2011?
 

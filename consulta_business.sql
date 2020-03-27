@@ -32,7 +32,8 @@ from leads
  group by site_id;*/
  
 /*6. ¿Qué consulta ejecutaría para obtener una lista de nombres de clientes y el número total de clientes potenciales que 
-hemos generado para cada uno de nuestros clientes entre el 1 de enero de 2011 y el 31 de diciembre de 2011?*/
+hemos generado para cada uno de nuestros clientes entre el 1 de enero de 2011 y el 31 de diciembre de 2011?
+
 select clients.first_name, clients.last_name, count(leads.leads_id) as leads
 from clients 
 inner join sites
@@ -40,10 +41,19 @@ on clients.client_id = sites.client_id
 inner join leads
 on sites.site_id = leads.site_id
 where registered_datetime >= '2011/01/01' AND registered_datetime < '2011/12/31'
-group by clients.client_id;
-/*7. ¿Qué consulta ejecutaría para obtener una lista de nombres de clientes y el número total de clientes potenciales que hemos generado para cada cliente cada mes entre los meses 1 y 6 del año 2011?
+group by clients.client_id;*/
 
-8. ¿Qué consulta ejecutaría para obtener una lista de nombres de clientes y el número total de clientes potenciales que hemos generado para cada uno de los sitios de nuestros clientes entre el 1 de enero de 2011 y el 31 de diciembre de 2011? Solicite esta consulta por ID de cliente. Presente una segunda consulta que muestre todos los clientes, los nombres del sitio y el número total de clientes potenciales generados en cada sitio en todo momento.
+/*7. ¿Qué consulta ejecutaría para obtener una lista de nombres de clientes y el número total de clientes potenciales que 
+hemos generado para cada cliente cada mes entre los meses 1 y 6 del año 2011?*/
+select month (registered_datetime) as mes, clients.first_name, clients.last_name, count(leads.leads_id) as leads
+from clients 
+inner join sites
+on clients.client_id = sites.client_id
+inner join leads
+on sites.site_id = leads.site_id
+where registered_datetime >= '2011/01/01' AND registered_datetime < '2011/06/30'
+group by clients.client_id;
+/*8. ¿Qué consulta ejecutaría para obtener una lista de nombres de clientes y el número total de clientes potenciales que hemos generado para cada uno de los sitios de nuestros clientes entre el 1 de enero de 2011 y el 31 de diciembre de 2011? Solicite esta consulta por ID de cliente. Presente una segunda consulta que muestre todos los clientes, los nombres del sitio y el número total de clientes potenciales generados en cada sitio en todo momento.
 
 9. Escriba una sola consulta que recupere los ingresos totales recaudados de cada cliente para cada mes del año. Pídalo por ID de cliente.
 

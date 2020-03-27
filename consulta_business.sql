@@ -1,16 +1,21 @@
 
-/*1. ¿Qué consulta ejecutaría para obtener los ingresos totales para marzo de 2012?*/
+/*1. ¿Qué consulta ejecutaría para obtener los ingresos totales para marzo de 2012?
 select sum(amount) as ingreso_total
 from billing
 where charged_datetime >= '2012/03/01' AND charged_datetime < '2012/03/31';
 
-/*2. ¿Qué consulta ejecutaría para obtener los ingresos totales recaudados del cliente con una identificación de 2?*/
+2. ¿Qué consulta ejecutaría para obtener los ingresos totales recaudados del cliente con una identificación de 2?
 select sum(amount) as ingreso_total, client_id
 from billing
-where client_id =2;
-/*3. ¿Qué consulta ejecutaría para obtener todos los sitios que posee client = 10?
+where client_id =2;*/
 
-4. ¿Qué consulta ejecutaría para obtener el número total de sitios creados por mes por año para el cliente con una identificación de 1? ¿Qué pasa con el cliente = 20?
+/*3. ¿Qué consulta ejecutaría para obtener todos los sitios que posee client = 10?*/
+
+select domain_name, client_id
+from sites
+where client_id =10;
+
+/*4. ¿Qué consulta ejecutaría para obtener el número total de sitios creados por mes por año para el cliente con una identificación de 1? ¿Qué pasa con el cliente = 20?
 
 5. ¿Qué consulta ejecutaría para obtener el número total de clientes potenciales generados para cada uno de los sitios entre el 1 de enero de 2011 y el 15 de febrero de 2011?
 
